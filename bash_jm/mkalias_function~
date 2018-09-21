@@ -1,0 +1,33 @@
+#!/bin/bash
+
+function mkalias_function(){
+	if [ $# -lt 2 ]; then
+		echo 'mkalias requires at least two parameters e.g. mkalias name commnd [file]'
+		return
+	fi
+	if [ $# -ge 2 ]; then
+		name=$1
+		comm=$2
+		file='~/.bash_aliases'
+	fi
+
+	if [ $# -eq 3 ]; then
+		file=$3
+	fi
+
+	echo 'Creating alias...'
+	echo "Alias name is $name"
+	echo "Alias command is $comm"
+	echo "Aliases file is $file"
+	read -p "Continue (Y/n)?" choice
+	case "$choice" in 
+		[yY][eE][sS]|y|Y|"" ) echo "alias $name=$comm" | tee -a -i -p  $file;;
+		[nN][oO]|n|N ) echo "no";;
+		* ) echo "invalid";;
+	esac
+	echo 'Alias created, updating bash...'
+	. ~/.bashrc
+	echo 'DONE'
+}
+
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+alias cd9='cd /misc/lmbraid19/faciljm/'
+alias bbb='source ~/.bashrc'
+alias ll='ls -lhF --color=auto'
+alias llt='ls -lht --color=auto'
+alias lla='ls -alF --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+alias ls="ls --color=auto"
+alias mkalias='mkalias_function'
