@@ -7,7 +7,7 @@ function mkalias_function(){
 	if [ $# -ge 2 ]; then
 		name=$1
 		comm=$2
-		file='~/.bash_aliases'
+		file="$HOME/.bash_aliases"
 	fi
 
 	if [ $# -eq 3 ]; then
@@ -20,7 +20,7 @@ function mkalias_function(){
 	echo "Aliases file is $file"
 	read -p "Continue (Y/n)?" choice
 	case "$choice" in 
-		[yY][eE][sS]|y|Y|"" ) echo "alias $name=$comm" | tee -a -i -p  $file;;
+		[yY][eE][sS]|y|Y|"" ) echo "alias $name=\"$comm\"" | tee -a -i -p  $file;;
 		[nN][oO]|n|N ) echo "no";;
 		* ) echo "invalid";;
 	esac
@@ -29,4 +29,9 @@ function mkalias_function(){
 	echo 'DONE'
 }
 
+alias mkalias='mkalias_function'
+
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+fi
 
